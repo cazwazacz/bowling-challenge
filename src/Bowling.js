@@ -2,7 +2,7 @@ function Bowling() {
   this._total = 0;
   this._frames = [];
   this._spareBonus = false;
-  this._strikeBonus = false;
+  this._strikeBonus = 0;
   this._currentFrame = [];
 
 };
@@ -14,17 +14,16 @@ var frameTotal;
 var previousTotal;
 
 Bowling.prototype.bowl = function (bowl) {
-  this._currentFrame.push(bowl);
+  this.strikeBonus(bowl);
+  bowl === 10 ? this._currentFrame.push(bowl, 0) : this._currentFrame.push(bowl);
   this.spareBonus(bowl);
   if (this._currentFrame.length == 2) {
     this._frames.push(this._currentFrame);
-    console.log('frame', this._currentFrame);
-    console.log('frameTotal', this._frameTotal());
     if (this._frameTotal() == 10) {
       if (this._currentFrame[1] !== 0) {
         this._spareBonus = true;
       } else {
-        this._strikeBonus = true;
+        this._strikeBonus = 2;
       }
     }
     this._currentFrame = [];
@@ -44,6 +43,13 @@ Bowling.prototype.spareBonus = function (bowl) {
   if (this._spareBonus) {
     this._total += bowl;
     this._spareBonus = false;
+  }
+};
+
+Bowling.prototype.strikeBonus = function (bowl) {
+  if (this._strikeBonus) {
+    this._total += bowl;
+    this._strikeBonus--;
   }
 };
 

@@ -84,6 +84,156 @@ describe("Bowling", function() {
       bowling.bowl(5);
       expect(bowling.total()).toEqual(39);
     })
+
+    it ("1,4,4,5,6,4,5,5,10 => 59", function() {
+      bowling.bowl(1);
+      bowling.bowl(4);
+      bowling.bowl(4);
+      bowling.bowl(5);
+      bowling.bowl(6);
+      bowling.bowl(4);
+      bowling.bowl(5);
+      bowling.bowl(5);
+      bowling.bowl(10);
+      expect(bowling.total()).toEqual(59);
+    })
+
+    it ("1,4,4,5,6,4,5,5,strike,0 => 59", function() {
+      bowling.bowl(1);
+      bowling.bowl(4);
+      bowling.bowl(4);
+      bowling.bowl(5);
+      bowling.bowl(6);
+      bowling.bowl(4);
+      bowling.bowl(5);
+      bowling.bowl(5);
+      bowling.bowl(10);
+      bowling.bowl(0);
+      expect(bowling.total()).toEqual(59);
+    })
+
+    it ("1,4,4,5,6,4,5,5,strike,0,1 => 61", function() {
+      bowling.bowl(1);
+      bowling.bowl(4);
+      bowling.bowl(4);
+      bowling.bowl(5);
+      bowling.bowl(6);
+      bowling.bowl(4);
+      bowling.bowl(5);
+      bowling.bowl(5);
+      bowling.bowl(10);
+      bowling.bowl(0);
+      bowling.bowl(1);
+      expect(bowling.total()).toEqual(61);
+    })
+
+    it ("1,4,4,5,6,4,5,5,strike,0,1,7 => 68", function() {
+      bowling.bowl(1);
+      bowling.bowl(4);
+      bowling.bowl(4);
+      bowling.bowl(5);
+      bowling.bowl(6);
+      bowling.bowl(4);
+      bowling.bowl(5);
+      bowling.bowl(5);
+      bowling.bowl(10);
+      bowling.bowl(0);
+      bowling.bowl(1);
+      bowling.bowl(7);
+      expect(bowling.total()).toEqual(68);
+    })
+
+    it ("1,4,4,5,6,4,5,5,strike,0,1,7,3 => 71", function() {
+      bowling.bowl(1);
+      bowling.bowl(4);
+      bowling.bowl(4);
+      bowling.bowl(5);
+      bowling.bowl(6);
+      bowling.bowl(4);
+      bowling.bowl(5);
+      bowling.bowl(5);
+      bowling.bowl(10);
+      bowling.bowl(0);
+      bowling.bowl(1);
+      bowling.bowl(7);
+      bowling.bowl(3);
+      expect(bowling.total()).toEqual(71);
+    })
+
+    it ("1,4,4,5,6,4,5,5,strike,0,1,7,3,6 => 83", function() {
+      bowling.bowl(1);
+      bowling.bowl(4);
+      bowling.bowl(4);
+      bowling.bowl(5);
+      bowling.bowl(6);
+      bowling.bowl(4);
+      bowling.bowl(5);
+      bowling.bowl(5);
+      bowling.bowl(10);
+      bowling.bowl(0);
+      bowling.bowl(1);
+      bowling.bowl(7);
+      bowling.bowl(3);
+      bowling.bowl(6);
+      expect(bowling.total()).toEqual(83);
+    })
+
+    it ("1,4,4,5,6,4,5,5,strike,0,1,7,3,6 => 83", function() {
+      bowling.bowl(1);
+      bowling.bowl(4);
+      bowling.bowl(4);
+      bowling.bowl(5);
+      bowling.bowl(6);
+      bowling.bowl(4);
+      bowling.bowl(5);
+      bowling.bowl(5);
+      bowling.bowl(10);
+      bowling.bowl(0);
+      bowling.bowl(1);
+      bowling.bowl(7);
+      bowling.bowl(3);
+      bowling.bowl(6);
+      expect(bowling.total()).toEqual(83);
+    })
+
+    it ("1,4,4,5,6,4,5,5,strike,0,1,7,3,6,4 => 87", function() {
+      bowling.bowl(1);
+      bowling.bowl(4);
+      bowling.bowl(4);
+      bowling.bowl(5);
+      bowling.bowl(6);
+      bowling.bowl(4);
+      bowling.bowl(5);
+      bowling.bowl(5);
+      bowling.bowl(10);
+      bowling.bowl(0);
+      bowling.bowl(1);
+      bowling.bowl(7);
+      bowling.bowl(3);
+      bowling.bowl(6);
+      bowling.bowl(4);
+      expect(bowling.total()).toEqual(87);
+    })
+
+    it ("1,4,4,5,6,4,5,5,strike,0,1,7,3,6,4,strike => 107", function() {
+      bowling.bowl(1);
+      bowling.bowl(4);
+      bowling.bowl(4);
+      bowling.bowl(5);
+      bowling.bowl(6);
+      bowling.bowl(4);
+      bowling.bowl(5);
+      bowling.bowl(5);
+      bowling.bowl(10);
+      bowling.bowl(0);
+      bowling.bowl(1);
+      bowling.bowl(7);
+      bowling.bowl(3);
+      bowling.bowl(6);
+      bowling.bowl(4);
+      bowling.bowl(10);
+      expect(bowling.total()).toEqual(107);
+    })
     //
     // xit("[[1,4],[4,5],[6,4],[5,5],[10,0],[0,1],[7,3],[6,4],[10,0],[2,8,6]] => 133", function() {
     //   bowling.bowl([1,4]);
