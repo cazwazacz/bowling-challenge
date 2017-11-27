@@ -3,6 +3,8 @@ function Bowling() {
   this._frames = [];
   this._spareBonus = false;
   this._strikeBonus = false;
+  this._currentFrame = [];
+
 };
 
 var frame = [];
@@ -12,19 +14,20 @@ var frameTotal;
 var previousTotal;
 
 Bowling.prototype.bowl = function (bowl) {
-  frame.push(bowl);
+  this._currentFrame.push(bowl);
   this.spareBonus(bowl);
-  if (frame.length == 2) {
-    console.log('frame', frame);
-    console.log('frameTotal', this._frameTotal(frame));
-    if (this._frameTotal(frame) == 10) {
-      if (frame[1] !== 0) {
+  if (this._currentFrame.length == 2) {
+    this._frames.push(this._currentFrame);
+    console.log('frame', this._currentFrame);
+    console.log('frameTotal', this._frameTotal());
+    if (this._frameTotal() == 10) {
+      if (this._currentFrame[1] !== 0) {
         this._spareBonus = true;
       } else {
         this._strikeBonus = true;
       }
     }
-    frame = [];
+    this._currentFrame = [];
   }
   this._total += bowl;
 };
@@ -33,8 +36,8 @@ Bowling.prototype.total = function () {
   return this._total;
 };
 
-Bowling.prototype._frameTotal = function (frame) {
-  return frame.reduce(function(a, b) {return a + b;}, 0);
+Bowling.prototype._frameTotal = function () {
+  return this._currentFrame.reduce(function(a, b) {return a + b;}, 0);
 };
 
 Bowling.prototype.spareBonus = function (bowl) {
@@ -44,12 +47,17 @@ Bowling.prototype.spareBonus = function (bowl) {
   }
 };
 
+Bowling.prototype.frames = function () {
+  return this._frames;
+};
+
+Bowling.prototype.reset = function() {
+  this._total = 0;
+  this._frames = [];
+}
+
 // Bowling.prototype.total = function () {
 //   return this._total;
-// };
-//
-// Bowling.prototype.frames = function () {
-//   return this._frames;
 // };
 //
 // Bowling.prototype.framesTotal = function(n) {
@@ -75,10 +83,6 @@ Bowling.prototype.spareBonus = function (bowl) {
 //   this._spareBonus = null;
 // };
 //
-// Bowling.prototype.reset = function() {
-//   this._total = 0;
-//   this._frames = [];
-// }
 //
 // Bowling.prototype.bowl = function(roll) {
 //   previousFrame = this._frames.slice(-1)[0];

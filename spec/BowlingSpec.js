@@ -2,9 +2,6 @@ describe("Bowling", function() {
   var bowling;
   var times;
 
-  beforeEach(function() {
-    bowling = new Bowling();
-  })
 
   // describe("A new instance of bowling", function() {
   //   it ("has a total of zero", function() {
@@ -16,6 +13,9 @@ describe("Bowling", function() {
   // })
 
   describe("Bowling calculates scores, taking one bowl at a time", function() {
+    beforeEach(function() {
+      bowling = new Bowling();
+    })
 
     it ("1 => 1", function() {
       bowling.bowl(1);
@@ -84,20 +84,20 @@ describe("Bowling", function() {
       bowling.bowl(5);
       expect(bowling.total()).toEqual(39);
     })
-
-    xit("[[1,4],[4,5],[6,4],[5,5],[10,0],[0,1],[7,3],[6,4],[10,0],[2,8,6]] => 133", function() {
-      bowling.bowl([1,4]);
-      bowling.bowl([4,5]);
-      bowling.bowl([6,4]);
-      bowling.bowl([5,5]);
-      bowling.bowl([10,0]);
-      bowling.bowl([0,1]);
-      bowling.bowl([7,3]);
-      bowling.bowl([6,4]);
-      bowling.bowl([10,0]);
-      bowling.bowl([2,8,6]);
-      expect(bowling.total()).toEqual(133);
-    })
+    //
+    // xit("[[1,4],[4,5],[6,4],[5,5],[10,0],[0,1],[7,3],[6,4],[10,0],[2,8,6]] => 133", function() {
+    //   bowling.bowl([1,4]);
+    //   bowling.bowl([4,5]);
+    //   bowling.bowl([6,4]);
+    //   bowling.bowl([5,5]);
+    //   bowling.bowl([10,0]);
+    //   bowling.bowl([0,1]);
+    //   bowling.bowl([7,3]);
+    //   bowling.bowl([6,4]);
+    //   bowling.bowl([10,0]);
+    //   bowling.bowl([2,8,6]);
+    //   expect(bowling.total()).toEqual(133);
+    // })
 
     // it("[[0,1],[2,3],[4,5],[6,4],[3,6],[5,4],[5,5],[3,5],[2,7],[3,7,6]] => 92", function() {
     //   bowling.bowl([0,1]);
