@@ -234,6 +234,73 @@ describe("Bowling", function() {
       bowling.bowl(10);
       expect(bowling.total()).toEqual(107);
     })
+
+    it ("1,4,4,5,6,4,5,5,strike,0,1,7,3,6,4,strike,2 => 111", function() {
+      bowling.bowl(1);
+      bowling.bowl(4);
+      bowling.bowl(4);
+      bowling.bowl(5);
+      bowling.bowl(6);
+      bowling.bowl(4);
+      bowling.bowl(5);
+      bowling.bowl(5);
+      bowling.bowl(10);
+      bowling.bowl(0);
+      bowling.bowl(1);
+      bowling.bowl(7);
+      bowling.bowl(3);
+      bowling.bowl(6);
+      bowling.bowl(4);
+      bowling.bowl(10);
+      bowling.bowl(2);
+      expect(bowling.total()).toEqual(111);
+    })
+
+    it ("1,4,4,5,6,4,5,5,strike,0,1,7,3,6,4,strike,2,8 => 127", function() {
+      bowling.bowl(1);
+      bowling.bowl(4);
+      bowling.bowl(4);
+      bowling.bowl(5);
+      bowling.bowl(6);
+      bowling.bowl(4);
+      bowling.bowl(5);
+      bowling.bowl(5);
+      bowling.bowl(10);
+      bowling.bowl(0);
+      bowling.bowl(1);
+      bowling.bowl(7);
+      bowling.bowl(3);
+      bowling.bowl(6);
+      bowling.bowl(4);
+      bowling.bowl(10);
+      bowling.bowl(2);
+      bowling.bowl(8);
+      expect(bowling.total()).toEqual(127);
+    })
+
+    it ("1,4,4,5,6,4,5,5,strike,0,1,7,3,6,4,strike,2,8 => 133", function() {
+      bowling.bowl(1);
+      bowling.bowl(4);
+      bowling.bowl(4);
+      bowling.bowl(5);
+      bowling.bowl(6);
+      bowling.bowl(4);
+      bowling.bowl(5);
+      bowling.bowl(5);
+      bowling.bowl(10);
+      bowling.bowl(0);
+      bowling.bowl(1);
+      bowling.bowl(7);
+      bowling.bowl(3);
+      bowling.bowl(6);
+      bowling.bowl(4);
+      bowling.bowl(10);
+      bowling.bowl(2);
+      bowling.bowl(8);
+      bowling.bowl(6);
+      expect(bowling.total()).toEqual(133);
+    })
+
     //
     // xit("[[1,4],[4,5],[6,4],[5,5],[10,0],[0,1],[7,3],[6,4],[10,0],[2,8,6]] => 133", function() {
     //   bowling.bowl([1,4]);
@@ -300,14 +367,13 @@ describe("Bowling", function() {
     //   expect(bowling.total()).toEqual(260);
     // })
     //
-    // it("[[10,0],[10,0],[10,0],[10,0],[10,0],[10,0],[10,0],[10,0],[10,0],[10,10,10]] => 300", function() {
-    //   times = 9;
-    //   for (var i=0; i<times; i++) {
-    //     bowling.bowl([10,0]);
-    //   }
-    //   bowling.bowl([10,10,10]);
-    //   expect(bowling.total()).toEqual(300);
-    // })
+    it("all strikes => 300", function() {
+      times = 12;
+      for (var i=0; i<times; i++) {
+        bowling.bowl(10);
+      }
+      expect(bowling.total()).toEqual(300);
+    })
 
   })
 });

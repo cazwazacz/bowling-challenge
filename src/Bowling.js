@@ -14,12 +14,17 @@ var frameTotal;
 var previousTotal;
 
 Bowling.prototype.bowl = function (bowl) {
-  this.strikeBonus(bowl);
-  bowl === 10 ? this._currentFrame.push(bowl, 0) : this._currentFrame.push(bowl);
-  this.spareBonus(bowl);
+  this._finalFrameCheck(bowl);
+  this._strikeBonusCheck(bowl);
+  if (this._frames.length < 10) {
+    bowl === 10 ? this._currentFrame.push(bowl, 0) : this._currentFrame.push(bowl);
+  }
+  this._spareBonusCheck(bowl);
   if (this._currentFrame.length == 2) {
+    console.log(this._currentFrame);
     this._frames.push(this._currentFrame);
-    if (this._frameTotal() == 10) {
+    console.log(this._frames.length);
+    if (this._frames.length < 10 && this._frameTotal() == 10) {
       if (this._currentFrame[1] !== 0) {
         this._spareBonus = true;
       } else {
@@ -39,14 +44,20 @@ Bowling.prototype._frameTotal = function () {
   return this._currentFrame.reduce(function(a, b) {return a + b;}, 0);
 };
 
-Bowling.prototype.spareBonus = function (bowl) {
+Bowling.prototype._finalFrameCheck = function (bowl) {
+  if (this._frames.length === 9) {
+    console.log('i am here');
+  }
+};
+
+Bowling.prototype._spareBonusCheck = function (bowl) {
   if (this._spareBonus) {
     this._total += bowl;
     this._spareBonus = false;
   }
 };
 
-Bowling.prototype.strikeBonus = function (bowl) {
+Bowling.prototype._strikeBonusCheck = function (bowl) {
   if (this._strikeBonus) {
     this._total += bowl;
     this._strikeBonus--;
